@@ -11,10 +11,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragmentContainerView, DieFragment())
-            .commit()
+        //fragment attached as a background worker gets a tag instead of a location id, findFragmentByTag
+        //can replace "== null" with "!is DieFragment"
+        if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) == null) //if no fragment exists yet ->
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragmentContainerView, DieFragment())
+                .commit()
     }
 }
