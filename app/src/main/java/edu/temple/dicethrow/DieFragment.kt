@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlin.random.Random
 
+const val DIESIDE = "sidenumber" //create as a global reference so companion function can see it
+
 class DieFragment : Fragment() {
 
-    val DIESIDE = "sidenumber"
 
     val CURRENT_ROLL_KEY = "current_roll"
 
@@ -60,5 +61,13 @@ class DieFragment : Fragment() {
     fun throwDie() {
         currentRoll = (Random.nextInt(dieSides)+1)
         dieTextView.text = currentRoll.toString()
+    }
+
+    companion object{
+        fun newInstance(sides: Int) = DieFragment().apply{
+            arguments = Bundle().apply{
+                putInt(DIESIDE, sides)
+            }
+        }
     }
 }
