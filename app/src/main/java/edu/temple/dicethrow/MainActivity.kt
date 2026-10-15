@@ -6,12 +6,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
+"just to push a branch"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val stringsdf = "just to push a branch"
         //fragment attached as a background worker gets a tag instead of a location id, findFragmentByTag
         //can replace "== null" with "!is DieFragment"
         if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) == null) //if no fragment exists yet ->
