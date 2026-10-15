@@ -6,7 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DieFragment.DieRollInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .add(R.id.fragmentContainerView, DieFragment.newInstance(50))//if not this way then default 6.
                 .commit()
+    }
 
-
+    override fun rollDie(){
         findViewById<Button>(R.id.rollDiceButton).setOnClickListener{
             (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as DieFragment).throwDie()
             //could also create a val frag = dieFrag but this ensures you are calling the frag that is currently in the container
